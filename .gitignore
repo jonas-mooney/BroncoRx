@@ -1,0 +1,7 @@
+.settings/
+.vscode/
+build/
+Debug/
+mx.scratch
+Drivers/
+.clangd
