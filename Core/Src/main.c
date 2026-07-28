@@ -29,6 +29,13 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+#pragma pack(push, 1)
+typedef struct {
+    uint16_t x;
+    uint16_t y;
+} joystick_payload_t;
+#pragma pack(pop)
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -217,7 +224,7 @@ printf("CONFIG after 0x00 probe = 0x%02X\r\n", probe);
 // Now the real config sequence
 uint8_t addr[5] = {0xE7, 0xE7, 0xE7, 0xE7, 0xE7};
 nrf24_write_addr_reg(NRF24_REG_RX_ADDR_P0, addr, 5);
-nrf24_write_reg(NRF24_REG_RX_PW_P0, 1);
+nrf24_write_reg(NRF24_REG_RX_PW_P0, 4);
 nrf24_write_reg(NRF24_REG_RF_CH, 76);
 nrf24_write_reg(NRF24_REG_CONFIG, 0x0B);
 
@@ -261,9 +268,13 @@ HAL_GPIO_WritePin(CE_Port, CE_Pin, GPIO_PIN_SET);
     // printf("STATUS = 0x%02X, CONFIG = 0x%02X, FIFO_STATUS = 0x%02X\r\n", status, cfg_check, fifo_status);
 
     if (status & 0x40) {   // RX_DR bit
-        uint8_t payload[1];
-        nrf24_read_payload(payload, 1);
-        printf("Received: 0x%02X\r\n", payload[0]);
+        // uint8_t payload[1]; // commented out when adding joystick data
+        // nrf24_read_payload(payload, 1); // commented out when adding joystick data
+        // printf("Received: 0x%02X\r\n", payload[0]);  // commented out when adding joystick data
+
+        joystick_payload_t received;
+        nrf24_read_payload((uint8_t *)&received, sizeof(received));
+        printf("X: %u  Y: %u\r\n", received.x, received.y);
 
         nrf24_write_reg(NRF24_REG_STATUS, 0x40);  // clear RX_DR
     }
