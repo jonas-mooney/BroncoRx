@@ -296,19 +296,19 @@ HAL_GPIO_WritePin(CE_Port, CE_Pin, GPIO_PIN_SET);
 
     HAL_Delay(200);
 
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 50);
-    HAL_Delay(300);
+    // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
+    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 50);
+    // HAL_Delay(300);
 
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
-    HAL_Delay(300);
+    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+    // HAL_Delay(300);
 
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 50);
-    HAL_Delay(300);
+    // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
+    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 50);
+    // HAL_Delay(300);
 
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
-    HAL_Delay(300);
+    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+    // HAL_Delay(300);
 
   }
   /* USER CODE END 3 */
