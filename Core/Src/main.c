@@ -213,6 +213,7 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   printf("User code begin 2\r\n");
+  printf("Build check: 15/15 test version\r\n");
 
       // set PWR_UP = 1
   // set PRIM_RX = 0
@@ -297,18 +298,27 @@ HAL_GPIO_WritePin(CE_Port, CE_Pin, GPIO_PIN_SET);
     HAL_Delay(200);
 
     // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
-    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 50);
-    // HAL_Delay(300);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 75);
+    HAL_Delay(2000);
 
-    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
-    // HAL_Delay(300);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+    HAL_Delay(2000);
 
     // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 50);
-    // HAL_Delay(300);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 100);
+    HAL_Delay(2000);
 
-    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
-    // HAL_Delay(300);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+    HAL_Delay(2000);
+
+    // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 125);
+    HAL_Delay(2000);
+
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+    HAL_Delay(2000);
+
+    printf("End of loop\n");
 
   }
   /* USER CODE END 3 */
